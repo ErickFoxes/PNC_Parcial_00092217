@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.dao.CategoriaDAO;
 import com.uca.capas.dao.LibroDAO;
-import com.uca.capas.domain.Categoria;
+import com.uca.capas.domain.Categoria;	
 import com.uca.capas.domain.Libro;
 
 
@@ -78,6 +78,21 @@ public class MainController {
 			mav.setViewName("index");
 		}
 		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/mostrarLibros")
+	public ModelAndView findAll() {
+		ModelAndView mav = new ModelAndView();
+		List<Libro> libros = null;
+		try {
+			libros = libroDAO.findAll();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		mav.addObject("libros",libros);
+		mav.setViewName("mostrarLibro");
 		return mav;
 	}
 	

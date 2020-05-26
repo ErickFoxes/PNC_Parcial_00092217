@@ -28,7 +28,7 @@ public class LibroDAOImpl implements LibroDAO{
 	public List<Libro> findAll() throws DataAccessException {
 		StringBuffer sb = new StringBuffer();
 		sb.append("select * from public.cat_libro");
-		Query query = entityManager.createNativeQuery(sb.toString(), Categoria.class);
+		Query query = entityManager.createNativeQuery(sb.toString(), Libro.class);
 
 		List<Libro> res = query.getResultList();
 		return res;

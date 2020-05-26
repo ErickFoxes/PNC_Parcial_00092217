@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,9 +28,13 @@ public class Libro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codigo_cat;
 	
+	@Size(message="El campo sobrepasa la cantidad de 500 caracteres", max=500)
+	@NotEmpty(message="El campo nombre categoría no puede estar vacío")
 	@Column(name="s_titulo")
 	private String titulo;
 	
+	@Size(message="El campo sobrepasa la cantidad de 150 caracteres", max=150)
+	@NotEmpty(message="El campo nombre categoría no puede estar vacío")
 	@Column(name="s_autor")
 	private String autor;
 	
@@ -46,6 +52,8 @@ public class Libro {
 	@Column(name="b_estado")
 	private Boolean estado;
 	
+	@Size(message="El campo sobrepasa la cantidad de 10 caracteres", max=10)
+	@NotEmpty(message="El campo nombre categoría no puede estar vacío")
 	@Column(name="s_isbn")
 	private String isbn;
 
