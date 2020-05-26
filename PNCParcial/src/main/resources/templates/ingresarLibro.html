@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Ingresar Libro</title>
+</head>
+<body>
+	<h1>Ingresar Libro </h1>
+	<form method="post" th:action="@{/ingresarLibro}" th:object="${libro}">
+		
+		<label>Titulo del libro:</label><br>
+		<input type="text" th:field="*{titulo}">
+		<span th:errors="*{titulo}" style="color: #FD8884"></span>
+		<br>
+		
+		<label>Nombre del autor:</label><br>
+		<input type="text" th:field="*{autor}">
+		<span th:errors="*{autor}" style="color: #FD8884"></span>
+		<br>
+		
+		<label>Categoria: </label><br>
+		<select th:field="*{c_categoria}">
+		    <option th:each="cat : ${categoriaSelect}"
+		    th:value="${cat.codigo_cat}" 
+		    th:text="${cat.nombre}">
+		    </option>
+		</select>
+		<br>
+		
+		<label>Estado: </label><br>
+		<label>Inactivo: </label>
+		<input type="checkbox" id="estado" name="estado"  th:value="${false}">
+		<label>Activo: </label>
+		<input type="checkbox" id="estado" name="estado" th:value="${true}">
+		<br>
+		
+		<label>Isbn:</label><br>
+		<input type="text" th:field="*{isbn}">
+		<span th:errors="*{isbn}" style="color: #FD8884"></span>
+		<br>
+		
+		
+		<input type="submit" value="Guardar categoria" >
+	</form>
+</body>
+</html>
